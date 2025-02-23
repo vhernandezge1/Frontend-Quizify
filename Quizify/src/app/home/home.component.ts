@@ -8,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  // Logique du composant d'accueil
+  
+  // Ajouter la méthode startQuiz() ici
+  startQuiz() {
+    console.log("Démarrer le quiz...");
+    // Tu peux ajouter ici la logique pour démarrer un quiz,
+    // comme rediriger l'utilisateur vers une autre page ou afficher un quiz
+  }
 }

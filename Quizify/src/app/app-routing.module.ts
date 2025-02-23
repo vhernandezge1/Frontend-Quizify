@@ -1,11 +1,13 @@
+// src/app/app-routing.module.ts
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';  // Vérifie le chemin d'importation
-import { LoginComponent } from './auth/login.component';  // Vérifie le chemin d'importation
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './auth/login.component';
 
-const routes: Routes = [
-  { path: '', component: HomeComponent },  // Page d'accueil
-  { path: 'login', component: LoginComponent },  // Page de connexion
+export const routes: Routes = [  // Ajoute "export" pour rendre 'routes' accessible dans d'autres fichiers
+  { path: '', component: HomeComponent },  // Route pour la page d'accueil
+  { path: 'login', component: LoginComponent },  // Route pour la page de connexion
 ];
 
 @NgModule({
@@ -13,4 +15,3 @@ const routes: Routes = [
   exports: [RouterModule]  // Exporte le module de routage
 })
 export class AppRoutingModule {}
-
