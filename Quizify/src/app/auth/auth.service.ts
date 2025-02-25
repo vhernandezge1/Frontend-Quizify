@@ -1,22 +1,26 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import firebase from 'firebase/app';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword,User } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private afAuth: AngularFireAuth) {}
+  private afAuth ;
+  constructor() {
+    
+    this.afAuth = getAuth();
+  }
 
   // S'inscrire un utilisateur avec email et mot de passe
-  signUp(email: string, password: string): Promise<firebase.auth.UserCredential> {
-    return this.afAuth.createUserWithEmailAndPassword(email, password);
+  signUp(email: string, password: string) {
+    return createUserWithEmailAndPassword(this.afAuth,email, password);
   }
 
   // Connexion de l'utilisateur avec email et mot de passe
-  signIn(email: string, password: string): Promise<firebase.auth.UserCredential> {
-    return this.afAuth.signInWithEmailAndPassword(email, password);
+  signIn(email: string, password: string) {
+    return signInWithEmailAndPassword(this.afAuth,email, password);
   }
 
   // Déconnexion de l'utilisateur
@@ -24,8 +28,6 @@ export class AuthService {
     return this.afAuth.signOut();
   }
 
-  // Obtenir l'utilisateur courant
-  getCurrentUser(): Observable<firebase.User | null> {
-    return this.afAuth.authState;
+  
   }
-}
+
